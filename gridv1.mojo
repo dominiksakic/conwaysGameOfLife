@@ -1,11 +1,11 @@
 @value
-struct Grid():
+struct Grid(StringableRaising):
     var rows: Int
     var cols: Int
     var data: List[List[Int]]
 
 
-    def grid_str(self) -> String:
+    def __str__(self) -> String:
         str = String()
 
         # Iterate through rows 0 through  rows -1
