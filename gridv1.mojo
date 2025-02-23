@@ -1,3 +1,5 @@
+import random 
+
 @value
 struct Grid(StringableRaising):
     var rows: Int
@@ -26,3 +28,21 @@ struct Grid(StringableRaising):
 
     def __setitem__(mut self, row: Int, col: Int, value: Int) -> None:
         self.data[row][col] = value
+
+    @staticmethod
+    def random(rows: Int, cols: Int) -> Self:
+        # Seed the random numbers generator  using the current time.
+        random.seed()
+
+        data = List[List[Int]]()
+
+        for row in range(rows):
+            row_data = List[Int]()
+            for col in range(cols):
+                # Generate a random 0 or 1 and append it to the row.
+                row_data.append(Int(random.random_si64(0,1)))
+            data.append(row_data)
+        
+        return Self(rows, cols, data)
+
+
